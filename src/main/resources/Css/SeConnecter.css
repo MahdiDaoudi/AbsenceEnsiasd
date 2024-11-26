@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Regular.ttf') format('truetype');
+}
+
+.CircleClose:hover{
+    -fx-fill: #ff3838;
+}
+.CircleReduir:hover{
+    -fx-fill: #ffbe36;
+}
+.paneTop{
+    -fx-background-radius: 10 10 0 0;
+    -fx-border-radius: 1 10 0 0;
+}
+.paneRight{
+    -fx-background-radius: 0 0 10 0;
+    -fx-border-radius: 0 0 10 0;
+}
+.paneLeft{
+    -fx-background-radius: 0 0 0 10;
+    -fx-border-radius: 0 0 0 10;
+}
+
+.premierTitre{
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 30;
+    -fx-font-weight: bolder;
+}
+.deuxiemTitre{
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 14;
+    -fx-font-weight: bolder;
+}
+
+.buttonSeConnecter{
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-background-color: #0284c7;
+    -fx-text-fill: #fff;
+}
+
+.mfx-text-field{
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 13;
+    -fx-border-color: #0c4a6e;
+}
+
+.mfx-text-field .floating-text{
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 13;
+    -fx-text-fill: #0c4a6e;
+}

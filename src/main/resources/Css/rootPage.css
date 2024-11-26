@@ -1,0 +1,51 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Regular.ttf') format('truetype');
+}
+
+.titre{
+    -fx-font-family: 'Poppins';
+    -fx-font-weight: bolder;
+    -fx-font-size: 11;
+}
+
+.profNom{
+    -fx-font-family: 'Poppins';
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+}
+
+.CircleClose:hover{
+    -fx-fill: #ff3838;
+}
+.CircleMaximize:hover{
+    -fx-fill: #43ff60;
+}
+.CircleReduir:hover{
+    -fx-fill: #ffbe36;
+}
+.sideBare{
+    -fx-border-color: #eee;
+    -fx-border-width: 1 2 0 0;
+    -fx-background-radius: 0 0 0 15;
+    -fx-border-radius: 0 0 0 15;
+}
+.titreGrid{
+    -fx-font-family: 'Poppins';
+    -fx-font-weight: 700;
+    -fx-font-size: 12.3;
+}
+.topGrid{
+    -fx-background-radius: 15 15 0 0;
+    -fx-border-radius: 15 15 0 0;
+}
+
+.paneContent{
+    -fx-background-radius: 0 0 15 0;
+    -fx-border-radius: 0 0 15 0;
+}
+
+.sideBar-Pane:hover{
+    -fx-background-color: #eee;
+    -fx-background-radius: 50 0 0 50;
+}
