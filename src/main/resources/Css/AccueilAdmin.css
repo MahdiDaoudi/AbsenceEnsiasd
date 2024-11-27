@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Regular.ttf') format('truetype');
+}
+
+.labelInfoAbsence{
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Poppins';
+}
+
+.divNombreAbsence{
+    -fx-background-radius: 20 20 20 20;
+    -fx-border-radius: 20 20 20 20;
+}
+.labelNombreAbsence{
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+}
