@@ -25,6 +25,15 @@ public class DatabaseConnection {
         }
         return connection;
     }
+    public static void deconnecter() {
+        if (getConnection() != null) {
+            try {
+                getConnection().close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public static void main(String[] args) {
         System.out.println(getConnection());

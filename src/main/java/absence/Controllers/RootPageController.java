@@ -1,5 +1,8 @@
 package absence.Controllers;
 
+import absence.Dao.DatabaseConnection;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -38,6 +41,7 @@ public class RootPageController {
 
     @FXML
     private HBox professeursBtn;
+    @FXML private MFXButton seDeconnecter;
 
     private double x=0,y=0;
 
@@ -124,4 +128,10 @@ public class RootPageController {
         }
     }
 
+    public void deconnecter(ActionEvent actionEvent) throws IOException {
+        DatabaseConnection.deconnecter();
+        Stage currentStage = (Stage) seDeconnecter.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/SeConnecter.fxml"));
+        currentStage.setScene(fxmlLoader.load());
+    }
 }

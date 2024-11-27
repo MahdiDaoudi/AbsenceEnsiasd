@@ -37,11 +37,11 @@
                   <Font name="Open Sans Bold" size="17.0" />
                </font>
             </Text>
-            <MFXTextField floatMode="BORDER" floatingText="Email" layoutX="58.0" layoutY="153.0" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="310.0" styleClass="text-field">
+            <MFXTextField  fx:id="emailField" floatMode="BORDER" floatingText="Email" layoutX="58.0" layoutY="153.0" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="310.0" styleClass="text-field">
                <padding>
                   <Insets left="40.0" />
                </padding></MFXTextField>
-            <MFXPasswordField floatMode="BORDER" floatingText="Mots de pass" layoutX="57.0" layoutY="217.0" minHeight="40.0" minWidth="310.0" styleClass="text-field">
+            <MFXPasswordField  fx:id="passwordField" floatMode="BORDER" floatingText="Mots de pass" layoutX="57.0" layoutY="217.0" minHeight="40.0" minWidth="310.0" styleClass="text-field">
                <padding>
                   <Insets left="40.0" right="10.0" />
                </padding></MFXPasswordField>

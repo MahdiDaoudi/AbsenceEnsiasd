@@ -1,10 +1,14 @@
 package absence.Controllers;
 
+import absence.Dao.UtilisateurDAO;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
@@ -20,6 +24,9 @@ public class SeConnecterController {
     @FXML private Circle reduirBtn;
 
     @FXML private MFXButton seConnecterBtn;
+    @FXML private MFXTextField emailField;
+    @FXML private MFXPasswordField passwordField;
+    private UtilisateurDAO utilisateurDAO=new UtilisateurDAO();
 
     private double x=0,y=0;
 
@@ -47,19 +54,29 @@ public class SeConnecterController {
         stage.setX(event.getScreenX() - x);
         stage.setY(event.getScreenY() - y);
     }
-
     @FXML
     void connecter(ActionEvent event) {
-        Stage stage = (Stage) seConnecterBtn.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/rootPage.fxml"));
-        try {
-            Scene scene = new Scene(fxmlLoader.load());
-            stage.setScene(scene);
-            stage.setX(10);
-            stage.setY(10);
-            stage.show();
-        }catch (IOException e){
-            e.printStackTrace();
+        String email = emailField.getText();
+        String password = passwordField.getText();
+        //System.out.println(emailField.getText());
+        //System.out.println(passwordField.getText());
+
+        if (utilisateurDAO.verifierLogin(email, password) != null) {
+            Stage stage = (Stage) seConnecterBtn.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/rootPage.fxml"));
+            try {
+                Scene scene = new Scene(fxmlLoader.load());
+                stage.setScene(scene);
+                stage.setX(10);
+                stage.setY(10);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de Connexion");
+            alert.showAndWait();
         }
     }
 

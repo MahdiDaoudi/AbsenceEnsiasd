@@ -13,6 +13,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Text?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" style="-fx-background-color: #fff; -fx-background-radius: 15; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.Controllers.RootPageController">
     <children>
         <GridPane fx:id="topGrid" layoutX="409.0" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="30.0" style="-fx-background-color: #fff;" styleClass="topGrid" stylesheets="@../Css/rootPage.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -134,11 +135,11 @@
                         <Insets left="25.0" />
                      </GridPane.margin>
                   </ImageView>
-                  <Label id="titreGrid" styleClass="titreGrid" text="Se Deconnecter">
+                  <MFXButton id="seDeconnecter" styleClass="titreGrid" text="Se Deconnecter" onAction="#deconnecter">
                      <GridPane.margin>
                         <Insets left="65.0" />
                      </GridPane.margin>
-                  </Label>
+                  </MFXButton>
                </children>
             </GridPane>
             </children>

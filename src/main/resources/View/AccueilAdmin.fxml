@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="950.0" style="-fx-background-color: #efefef;" stylesheets="@../Css/AccueilAdmin.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="absence.Controllers.AccueilAdminController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="950.0" style="-fx-background-color: #efefef;" stylesheets="@../Css/AccueilAdmin.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="200.0" prefWidth="200.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <padding>
@@ -36,7 +36,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label styleClass="labelNombreAbsence" text="4" />
+                              <Label fx:id="labelNombreAbsenceAujourdhui" styleClass="labelNombreAbsence" text="4" />
                            </children>
                         </VBox>
                      </children>
@@ -63,7 +63,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label styleClass="labelNombreAbsence" text="12" />
+                              <Label fx:id="labelNombreAbsenceCetteSemaine" styleClass="labelNombreAbsence" text="12" />
                            </children>
                         </VBox>
                      </children>
@@ -90,7 +90,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label styleClass="labelNombreAbsence" text="27" />
+                              <Label fx:id="labelNombreAbsenceCeMois" styleClass="labelNombreAbsence" text="27" />
                            </children>
                         </VBox>
                      </children>
