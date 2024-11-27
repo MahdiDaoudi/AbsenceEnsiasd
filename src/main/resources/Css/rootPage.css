@@ -45,7 +45,7 @@
     -fx-border-radius: 0 0 15 0;
 }
 
-.sideBar-Pane:hover{
+.sideBar-HboxButton:hover{
     -fx-background-color: #eee;
     -fx-background-radius: 50 0 0 50;
 }

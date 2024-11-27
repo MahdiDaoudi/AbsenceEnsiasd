@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
@@ -61,48 +62,58 @@
                 </VBox>
                 <VBox prefHeight="209.0" prefWidth="250.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <GridPane>
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                            <children>
-                        <Pane styleClass="sideBar-Pane">
-                           <children>
-                                      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="25.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                          <image>
-                                              <Image url="@../asset/etudiants.png" />
-                                          </image>
-                                      </ImageView>
-                                      <Label id="titreGrid" layoutX="66.0" layoutY="16.0" styleClass="titreGrid" text="Etudiants" />
-                           </children>
-                        </Pane>
-                        <Pane styleClass="sideBar-Pane" GridPane.rowIndex="2">
-                           <children>
-                                      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="28.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                                          <image>
-                                              <Image url="@../asset/admins.png" />
-                                          </image>
-                                      </ImageView>
-                                      <Label layoutX="67.0" layoutY="16.0" styleClass="titreGrid" text="Admins" />
-                           </children>
-                        </Pane>
-                        <Pane styleClass="sideBar-Pane" GridPane.rowIndex="1">
-                           <children>
-                                      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="28.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                          <image>
-                                              <Image url="@../asset/enseignants.png" />
-                                          </image>
-                                      </ImageView>
-                                      <Label layoutX="65.0" layoutY="16.0" styleClass="titreGrid" text="Professeur" />
-                           </children>
-                        </Pane>
-                            </children>
-                        </GridPane>
+                  <HBox fx:id="accueilBtn" alignment="CENTER_LEFT" onMouseClicked="#allerVersAccueil" prefHeight="60.0" prefWidth="200.0" spacing="20.0" styleClass="sideBar-HboxButton">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asset/home.png" />
+                           </image>
+                        </ImageView>
+                        <Label id="titreGrid" styleClass="titreGrid" text="Accueil" />
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="etudiantsBtn" alignment="CENTER_LEFT" onMouseClicked="#allerVersEtudiants" prefHeight="60.0" prefWidth="200.0" spacing="20.0" styleClass="sideBar-HboxButton">
+                     <children>
+                                <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../asset/etudiants.png" />
+                                    </image>
+                                </ImageView>
+                                <Label id="titreGrid" styleClass="titreGrid" text="Etudiants" />
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="professeursBtn" alignment="CENTER_LEFT" layoutX="10.0" layoutY="300.0" onMouseClicked="#allerVersProfesseur" prefHeight="60.0" prefWidth="200.0" spacing="20.0" styleClass="sideBar-HboxButton">
+                     <children>
+                                <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../asset/enseignants.png" />
+                                    </image>
+                                </ImageView>
+                                <Label styleClass="titreGrid" text="Professeur" />
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="adminsBtn" alignment="CENTER_LEFT" layoutX="10.0" layoutY="300.0" onMouseClicked="#allerVersAdmins" prefHeight="60.0" prefWidth="200.0" spacing="20.0" styleClass="sideBar-HboxButton">
+                     <children>
+                                <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../asset/admins.png" />
+                                    </image>
+                                </ImageView>
+                                <Label styleClass="titreGrid" text="Admins" />
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
                     </children>
                     <padding>
                         <Insets top="50.0" />
@@ -133,6 +144,6 @@
             </GridPane>
             </children>
         </VBox>
-        <Pane layoutX="250.0" layoutY="30.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #efefef;" styleClass="paneContent" stylesheets="@../Css/rootPage.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" />
+        <Pane fx:id="contenuPane" layoutX="250.0" layoutY="30.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #efefef;" styleClass="paneContent" stylesheets="@../Css/rootPage.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" />
     </children>
 </AnchorPane>
