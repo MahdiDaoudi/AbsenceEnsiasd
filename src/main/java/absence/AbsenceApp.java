@@ -14,7 +14,7 @@ public class AbsenceApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         UserAgentBuilder.builder().themes(MaterialFXStylesheets.forAssemble(true)).setDeploy(true).setDebug(true).setResolveAssets(true).build().setGlobal();
-        FXMLLoader fxmlLoader = new FXMLLoader(AbsenceApp.class.getResource("/View/rootPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AbsenceApp.class.getResource("/View/SeConnecter.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.setFill(Color.TRANSPARENT);
         stage.initStyle(StageStyle.TRANSPARENT);

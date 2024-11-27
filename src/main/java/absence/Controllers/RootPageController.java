@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
@@ -28,7 +25,7 @@ public class RootPageController {
     private Circle reduireBtn;
 
     @FXML
-    private Pane contenuPane;
+    private AnchorPane contenuPane;
 
     @FXML
     private HBox accueilBtn;
@@ -84,9 +81,14 @@ public class RootPageController {
 
     @FXML
     void allerVersAccueil(MouseEvent event) {
-        contenuPane.getChildren().clear();
         try {
-            contenuPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("/View/AccueilAdmin.fxml")));
+            contenuPane.getChildren().clear();
+            Node node = (Node) FXMLLoader.load(getClass().getResource("/View/AccueilAdmin.fxml"));
+            AnchorPane.setTopAnchor(node, 0.0);
+            AnchorPane.setLeftAnchor(node, 0.0);
+            AnchorPane.setRightAnchor(node, 0.0);
+            AnchorPane.setBottomAnchor(node, 0.0);
+            contenuPane.getChildren().setAll(node);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

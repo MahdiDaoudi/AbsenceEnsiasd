@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
@@ -144,6 +143,6 @@
             </GridPane>
             </children>
         </VBox>
-        <Pane fx:id="contenuPane" layoutX="250.0" layoutY="30.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #efefef;" styleClass="paneContent" stylesheets="@../Css/rootPage.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" />
+      <AnchorPane fx:id="contenuPane" layoutX="250.0" layoutY="30.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" />
     </children>
 </AnchorPane>
