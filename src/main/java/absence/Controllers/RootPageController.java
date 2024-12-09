@@ -1,15 +1,19 @@
 package absence.Controllers;
 
 import absence.Dao.DatabaseConnection;
+import absence.Modele.Utilisateur;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -42,6 +46,7 @@ public class RootPageController {
     @FXML
     private HBox professeursBtn;
     @FXML private MFXButton seDeconnecter;
+    @FXML private Label emailUser;
 
     private double x=0,y=0;
 
@@ -117,7 +122,15 @@ public class RootPageController {
             throw new RuntimeException(e);
         }
     }
-
+    @FXML
+    void allerVersAvertissmenet(MouseEvent event) {
+        contenuPane.getChildren().clear();
+        try {
+            contenuPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("/View/AVertissement.fxml")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @FXML
     void allerVersProfesseur(MouseEvent event) {
         contenuPane.getChildren().clear();
@@ -127,11 +140,28 @@ public class RootPageController {
             throw new RuntimeException(e);
         }
     }
+    @FXML
+    void allerVersListEmails(MouseEvent event) {
+        contenuPane.getChildren().clear();
+        try {
+            contenuPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("/View/ListEmail.fxml")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    @FXML
+    public void initialize() {
+        getuserdata();
+    }
+    public void getuserdata(){
+       emailUser.setText(SessionManager.getUtilisateurActuel().getEMAIL()); ;
+    }
     public void deconnecter(ActionEvent actionEvent) throws IOException {
         DatabaseConnection.deconnecter();
         Stage currentStage = (Stage) seDeconnecter.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/SeConnecter.fxml"));
         currentStage.setScene(fxmlLoader.load());
     }
+
 }

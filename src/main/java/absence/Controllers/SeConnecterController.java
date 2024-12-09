@@ -1,6 +1,7 @@
 package absence.Controllers;
 
 import absence.Dao.UtilisateurDAO;
+import absence.Modele.Utilisateur;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -27,6 +28,7 @@ public class SeConnecterController {
     @FXML private MFXTextField emailField;
     @FXML private MFXPasswordField passwordField;
     private UtilisateurDAO utilisateurDAO=new UtilisateurDAO();
+    private Utilisateur utilisateur;
 
     private double x=0,y=0;
 
@@ -60,8 +62,9 @@ public class SeConnecterController {
         String password = passwordField.getText();
         //System.out.println(emailField.getText());
         //System.out.println(passwordField.getText());
-
-        if (utilisateurDAO.verifierLogin(email, password) != null) {
+    utilisateur=utilisateurDAO.verifierLogin(email, password);
+        if (utilisateur != null) {
+            SessionManager.setUtilisateurActuel(utilisateur);
             Stage stage = (Stage) seConnecterBtn.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/rootPage.fxml"));
             try {

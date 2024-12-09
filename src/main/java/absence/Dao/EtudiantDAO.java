@@ -79,7 +79,7 @@ public class EtudiantDAO {
 
     // Méthode pour ajouter un étudiant avec l'ID
     public boolean ajouterEtudiant(Etudiant etudiant) {
-        String sql = "INSERT INTO ETUDIANT (ID_ETUDIANT, NOM_ETUDIANT, PRENOM_ETUDIANT, EMAIL, TELEPHONE, SEXE, ID_CLASSE) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT IGNORE INTO ETUDIANT (cne, NOM_ETUDIANT, PRENOM_ETUDIANT, EMAIL, TELEPHONE, SEXE, ID_CLASSE) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

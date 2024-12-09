@@ -1,5 +1,6 @@
 package absence.Dao;
 
+import absence.Controllers.AESUtil;
 import absence.Modele.Utilisateur;
 
 import java.sql.*;
@@ -20,7 +21,7 @@ public class UtilisateurDAO {
         String sql = "SELECT * FROM utilisateur WHERE EMAIL = ? AND PASSWORD = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, email);
-            preparedStatement.setString(2, password);
+            preparedStatement.setString(2, AESUtil.encrypt(password));
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -35,7 +36,8 @@ public class UtilisateurDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        } catch (Exception e) {
+            e.printStackTrace();        }
         return null;  // Retourne null si l'utilisateur n'est pas trouvé
     }
 
@@ -46,12 +48,14 @@ public class UtilisateurDAO {
             preparedStatement.setString(1, utilisateur.getNOM_USER());
             preparedStatement.setString(2, utilisateur.getPRENOM_USER());
             preparedStatement.setString(3, utilisateur.getEMAIL());
-            preparedStatement.setString(4, utilisateur.getPASSWORD());
+            preparedStatement.setString(4, AESUtil.encrypt(utilisateur.getPASSWORD()));
             preparedStatement.setString(5, utilisateur.getTELEPHONE());
             preparedStatement.setString(6, utilisateur.getROLE());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -105,4 +109,7 @@ public class UtilisateurDAO {
         }
     }
 
+    public static void main(String[] args) throws Exception {
+        System.out.println(AESUtil.decrypt("eXH1hDuwDQ+MlHme53FHEA=="));
+    }
 }
