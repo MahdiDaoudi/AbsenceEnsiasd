@@ -1,7 +1,7 @@
 module absence.absence {
     requires MaterialFX;
     requires java.sql;
-
+    requires java.mail;
 
     opens absence to javafx.fxml;
     exports absence;

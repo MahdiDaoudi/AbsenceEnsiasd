@@ -59,10 +59,10 @@ public class SeConnecterController {
     }
     @FXML
     void connecter(ActionEvent event) {
-//        String email = emailField.getText();
-//        String password = passwordField.getText();
-        String email = "me@gmail.com";
-        String password = "2004";
+        String email = emailField.getText();
+        String password = passwordField.getText();
+//        String email = "me@gmail.com";
+//        String password = "2004";
         Utilisateur utilisateur = utilisateurDAO.verifierLogin(email, password);
 
         if (utilisateur != null) {

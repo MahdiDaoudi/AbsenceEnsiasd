@@ -74,4 +74,18 @@ public class ClasseDAO {
         return classes;
     }
 
+    public String obtenirNomClasseParId(int idClasse) throws SQLException {
+        String sql = "SELECT NOM_CLASSE FROM classe WHERE ID_CLASSE = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, idClasse);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("NOM_CLASSE");
+                } else {
+                    return null; // Si aucune classe n'est trouvée avec cet ID
+                }
+            }
+        }
+    }
+
 }

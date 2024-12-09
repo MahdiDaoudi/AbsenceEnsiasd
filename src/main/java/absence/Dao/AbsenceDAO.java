@@ -5,6 +5,7 @@ package absence.Dao;
 import absence.Modeles.Absence;
 import absence.Modeles.AbsenceTableView;
 import absence.Modeles.Etudiant;
+import absence.Modeles.EtudiantAVertissement;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -209,5 +210,49 @@ public class AbsenceDAO {
         }
 
     }
+
+    public List<EtudiantAVertissement> getAbsencesParEtudiant() {
+        List<EtudiantAVertissement> absencesList = new ArrayList<>();
+        String query = "SELECT e.cne, e.NOM_ETUDIANT, e.PRENOM_ETUDIANT, e.EMAIL, e.TELEPHONE, e.SEXE, e.ID_CLASSE, " +
+                "COUNT(a.ID_ABSENCE) AS nombre_absences, MAX(s.DATE_SEANCE) AS derniere_absence " +  // Récupération de la dernière date d'absence
+                "FROM absence a " +
+                "JOIN etudiant e ON a.cne = e.cne " +
+                "JOIN seance s ON a.ID_SEANCE = s.ID_SEANCE " +  // Join avec la table seance pour obtenir la date
+                "WHERE a.JUSTIFIE = 0 " +  // Filtrer les absences non justifiées
+                "GROUP BY e.cne " +
+                "ORDER BY MAX(s.DATE_SEANCE) DESC";  // Tri par la date la plus récente d'absence
+
+        try (PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            // Parcourir les résultats et les ajouter à la liste
+            while (resultSet.next()) {
+                String cne = resultSet.getString("cne");
+                String nomEtudiant = resultSet.getString("NOM_ETUDIANT");
+                String prenomEtudiant = resultSet.getString("PRENOM_ETUDIANT");
+                String email = resultSet.getString("EMAIL");
+                String telephone = resultSet.getString("TELEPHONE");
+                String sexe = resultSet.getString("SEXE");
+                int idClasse = resultSet.getInt("ID_CLASSE");
+                int nombreAbsences = resultSet.getInt("nombre_absences"); // Nombre d'absences
+
+                // Multiplier le nombre d'absences par 2
+                int nombreAbsencesMultiplié = nombreAbsences * 2;
+
+                // Créer un objet Etudiant avec les informations récupérées
+                Etudiant etudiant = new Etudiant(
+                        cne, nomEtudiant, prenomEtudiant, email, telephone, sexe, idClasse);
+                EtudiantAVertissement etudiantAbsence = new EtudiantAVertissement(etudiant, nombreAbsencesMultiplié);
+
+                absencesList.add(etudiantAbsence);
+                System.out.println(etudiantAbsence);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return absencesList;
+    }
+
 }
 

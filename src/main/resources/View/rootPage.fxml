@@ -139,10 +139,33 @@
                         <Insets left="30.0" />
                      </padding>
                   </HBox>
+                  <HBox fx:id="avertissementbtn" alignment="CENTER_LEFT" layoutX="10.0" layoutY="340.0" onMouseClicked="#allerVersAvertissement" prefHeight="60.0" prefWidth="200.0" spacing="20.0" styleClass="sideBar-HboxButton">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asset/avertissemnet.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="titreGrid" text="Avertissement" />
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="listemailBtn" alignment="CENTER_LEFT" layoutX="10.0" layoutY="370.0" onMouseClicked="#allerVersListEmails" prefHeight="60.0" prefWidth="200.0" spacing="20.0" styleClass="sideBar-HboxButton">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../3D%20Objects/AbsenceEnsiasd/AbsenceEnsiasd/src/main/resources/asset/mail.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="titreGrid" text="Emails envoyées" />
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
                     </children>
-                    <padding>
-                        <Insets top="30.0" />
-                    </padding>
                 </VBox>
             <HBox fx:id="deconnecterBtn" alignment="CENTER_LEFT" onMouseClicked="#deconnecter" prefHeight="60.0" prefWidth="200.0" spacing="20.0" styleClass="sideBar-HboxButton">
                <children>

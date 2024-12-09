@@ -1,5 +1,6 @@
 package absence.Dao;
 
+import absence.Controllers.AESUtil;
 import absence.Modeles.Utilisateur;
 
 import java.sql.*;
@@ -15,12 +16,11 @@ public class UtilisateurDAO {
        connection=DatabaseConnection.getConnection();
     }
 
-    // Vérification des informations de connexion (email et mot de passe)
     public Utilisateur verifierLogin(String email, String password) {
         String sql = "SELECT * FROM utilisateur WHERE EMAIL = ? AND PASSWORD = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, email);
-            preparedStatement.setString(2, password);
+            preparedStatement.setString(2, AESUtil.encrypt(password));
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -35,7 +35,8 @@ public class UtilisateurDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        } catch (Exception e) {
+            e.printStackTrace();        }
         return null;  // Retourne null si l'utilisateur n'est pas trouvé
     }
 

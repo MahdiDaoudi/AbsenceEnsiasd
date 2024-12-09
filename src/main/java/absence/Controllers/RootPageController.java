@@ -56,6 +56,12 @@ public class RootPageController {
     @FXML
     private Text nomPrenomUtilisateur;
 
+    @FXML
+    private HBox listemailBtn;
+
+    @FXML
+    private HBox avertissementbtn;
+
     private double x=0,y=0;
 
 
@@ -204,8 +210,28 @@ public class RootPageController {
     }
 
     @FXML
+    void allerVersAvertissement(MouseEvent event) {
+        contenuPane.getChildren().clear();
+        try {
+            contenuPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("/View/AVertissement.fxml")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void allerVersListEmails(MouseEvent event) {
+        contenuPane.getChildren().clear();
+        try {
+            contenuPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("/View/ListEmail.fxml")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
     void deconnecter(MouseEvent event) {
-        DatabaseConnection.deconnecter();
+//        DatabaseConnection.deconnecter();
         try {
             Stage stage = (Stage) deconnecterBtn.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/SeConnecter.fxml"));

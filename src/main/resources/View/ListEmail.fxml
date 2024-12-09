@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.Controllers.ListEmailController">
+    <children>
+        <TableView fx:id="tableView" layoutX="12.0" layoutY="9.0" prefHeight="341.0" prefWidth="574.0">
+            <columns>
+                <TableColumn fx:id="colDestinataire" prefWidth="228.0" text="Destinataire" />
+                <TableColumn fx:id="colMessage" prefWidth="130.0" text="Date d'envoi" />
+            <TableColumn fx:id="colMessage1" prefWidth="215.0" text="Message" />
+            </columns>
+        </TableView>
+    </children>
+</Pane>
