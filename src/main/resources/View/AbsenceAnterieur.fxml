@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="950.0" style="-fx-background-color: #efefef;" stylesheets="@../Css/absenceAnterieure.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.Controllers.AbsenceAnterieurController">
+   <children>
+      <HBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="54.0" prefWidth="930.0" style="-fx-background-color: #fff;" styleClass="paneTitre" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <Label styleClass="topTitre" text="Absence antérieure" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="69.0" prefHeight="81.0" prefWidth="200.0" spacing="5.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="68.0">
+         <children>
+            <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asset/filtre.png" />
+               </image>
+            </ImageView>
+            <MFXTextField floatMode="BORDER" floatingText="Filtre" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" prefWidth="261.0" />
+         </children>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </HBox>
+      <TableView fx:id="tableviewAbsence" layoutX="14.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" styleClass="TableView" stylesheets="@../Css/absenceAnterieure.css" AnchorPane.bottomAnchor="11.333333333333371" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
+        <columns>
+          <TableColumn fx:id="columnCne" maxWidth="1.7976931348623157E308" minWidth="-Infinity" resizable="false" text="CNE" />
+          <TableColumn fx:id="columnNomPrenom" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="113.0" resizable="false" text="Nom Prenom" />
+            <TableColumn fx:id="columnModule" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="206.0" resizable="false" text="Module" />
+            <TableColumn fx:id="columnSeance" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="68.0" resizable="false" text="Seance" />
+            <TableColumn fx:id="columnDate" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="85.0" resizable="false" text="Date" />
+            <TableColumn fx:id="columnHeures" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="90.0" resizable="false" text="Heures" />
+            <TableColumn fx:id="columnJustifie" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="65.0" resizable="false" text="Justifie" />
+            <TableColumn fx:id="columnMotif" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="130.0" resizable="false" text="Motif" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
