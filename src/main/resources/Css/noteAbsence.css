@@ -1,0 +1,43 @@
+.titre{
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+.pane-titre{
+    -fx-background-radius: 5 5 0 0;
+}
+.button{
+    -fx-background-radius: 50 ;
+    -fx-background-color: #0284c7;
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+}
+.mfx-combo-box {
+    -fx-border-color: #cccccc;
+    -fx-background-color: #ffffff;
+}
+
+.mfx-combo-box .floating-text{
+    -fx-text-fill: #3498db;
+}
+
+.mfx-combo-box .caret {
+    -fx-text-fill: #3498db;
+}
+
+.mfx-combo-box .combo-popup {
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #dddddd;
+}
+
+.mfx-combo-box .combo-popup .virtual-flow .mfx-combo-box-cell:hover {
+    -fx-background-color: rgba(147, 219, 255, 0.27);
+    -fx-text-fill: #000000;
+}
+
+.mfx-combo-box .combo-popup .virtual-flow .mfx-combo-box-cell:selected {
+    -fx-background-color: rgba(0, 172, 255, 0.27);
+}
+.mfx-combo-box .combo-popup .virtual-flow .data-label:selected {
+    -fx-text-fill: #ffffff;
+}

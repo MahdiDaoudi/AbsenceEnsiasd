@@ -1,4 +1,4 @@
-package absence.Modele;
+package absence.Modeles;
 
 public class Module {
     private int idModule;

@@ -1,4 +1,4 @@
-package absence.Modele;
+package absence.Modeles;
 
 public class Classe {
     private int idClasse;

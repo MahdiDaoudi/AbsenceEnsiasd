@@ -1,22 +1,32 @@
-package absence.Modele;
+package absence.Modeles;
 
 public class Absence {
     private int idAbsence;
     private int justifie; // 0 ou 1 pour Justifié
     private String motif;
-    private String idEtudiant;
+    private String cne;
     private int idSeance;
 
     // Constructeur
-    public Absence(int idAbsence, int justifie, String motif, String idEtudiant, int idSeance) {
+    public Absence(int idAbsence, int justifie, String motif, String cne, int idSeance) {
         this.idAbsence = idAbsence;
         this.justifie = justifie;
         this.motif = motif;
-        this.idEtudiant = idEtudiant;
+        this.cne = cne;
         this.idSeance = idSeance;
     }
 
     // Getter et Setter
+
+
+    public String getCne() {
+        return cne;
+    }
+
+    public void setCne(String cne) {
+        this.cne = cne;
+    }
+
     public int getIdAbsence() {
         return idAbsence;
     }
@@ -42,11 +52,11 @@ public class Absence {
     }
 
     public String getIdEtudiant() {
-        return idEtudiant;
+        return cne;
     }
 
     public void setIdEtudiant(String idEtudiant) {
-        this.idEtudiant = idEtudiant;
+        this.cne = idEtudiant;
     }
 
     public int getIdSeance() {

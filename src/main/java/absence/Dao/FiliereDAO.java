@@ -1,6 +1,6 @@
 package absence.Dao;
 
-import absence.Modele.Filiere;
+import absence.Modeles.Filiere;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -27,7 +27,8 @@ public class FiliereDAO {
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
             while (resultSet.next()) {
-                Filiere filiere = new Filiere(resultSet.getInt("ID_FILIERE"), resultSet.getString("NOM_FILIERE"));
+                Filiere filiere = new Filiere(resultSet.getInt("ID_FILIERE"),
+                        resultSet.getString("NOM_FILIERE"));
                 filieres.add(filiere);
             }
         }
@@ -50,4 +51,6 @@ public class FiliereDAO {
             statement.executeUpdate();
         }
     }
+
+
 }

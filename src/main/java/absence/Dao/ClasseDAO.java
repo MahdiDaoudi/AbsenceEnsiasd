@@ -1,6 +1,6 @@
 package absence.Dao;
 
-import absence.Modele.Classe;
+import absence.Modeles.Classe;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -60,4 +60,18 @@ public class ClasseDAO {
             statement.executeUpdate();
         }
     }
+
+    public  List<Classe> getClasseParFilier(int idDiliere) throws SQLException {
+        List<Classe> classes = new ArrayList<>();
+        String sql = "SELECT * from classe INNER JOIN filiere on classe.ID_FILIERE = filiere.ID_FILIERE WHERE filiere.id_filiere =?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, idDiliere);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                classes.add(new Classe(resultSet.getInt("ID_CLASSE"), resultSet.getString("NOM_CLASSE"), resultSet.getInt("ID_FILIERE")));
+            }
+        }
+        return classes;
+    }
+
 }

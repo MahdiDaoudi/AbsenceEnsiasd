@@ -1,14 +1,16 @@
 package absence.Controllers;
 
 import absence.Dao.DatabaseConnection;
-import io.github.palexdev.materialfx.controls.MFXButton;
-import javafx.event.ActionEvent;
+import absence.Modeles.Utilisateur;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -40,10 +42,49 @@ public class RootPageController {
     private HBox etudiantsBtn;
 
     @FXML
+    private HBox deconnecterBtn;
+
+    @FXML
+    private HBox absenceAnterieurBtn;
+
+    @FXML
     private HBox professeursBtn;
-    @FXML private MFXButton seDeconnecter;
+
+    @FXML
+    private HBox noteAbsenceBtn;
+
+    @FXML
+    private Text nomPrenomUtilisateur;
 
     private double x=0,y=0;
+
+
+    private  Utilisateur utilisateur;
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+        if (utilisateur != null) {
+            nomPrenomUtilisateur.setText(utilisateur.getPRENOM_USER().charAt(0) + "." + utilisateur.getNOM_USER());
+        }
+    }
+
+
+    @FXML
+    public void initialize() {
+        try {
+            Node node = (Node) FXMLLoader.load(getClass().getResource("/View/AccueilAdmin.fxml"));
+            AnchorPane.setTopAnchor(node, 0.0);
+            AnchorPane.setLeftAnchor(node, 0.0);
+            AnchorPane.setRightAnchor(node, 0.0);
+            AnchorPane.setBottomAnchor(node, 0.0);
+            contenuPane.getChildren().setAll(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @FXML
     void Close(MouseEvent event) {
@@ -109,6 +150,24 @@ public class RootPageController {
     }
 
     @FXML
+    void allerVersNoteAbsence(MouseEvent event) {
+        try {
+            contenuPane.getChildren().clear();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/NoteAbsence.fxml"));
+            Node node = (Node) fxmlLoader.load() ;
+            NoterAbsenceController noterAbsenceController = fxmlLoader.getController();
+            noterAbsenceController.setUtilisateur(utilisateur);
+            AnchorPane.setTopAnchor(node, 0.0);
+            AnchorPane.setLeftAnchor(node, 0.0);
+            AnchorPane.setRightAnchor(node, 0.0);
+            AnchorPane.setBottomAnchor(node, 0.0);
+            contenuPane.getChildren().setAll(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
     void allerVersEtudiants(MouseEvent event) {
         contenuPane.getChildren().clear();
         try {
@@ -128,10 +187,33 @@ public class RootPageController {
         }
     }
 
-    public void deconnecter(ActionEvent actionEvent) throws IOException {
+    @FXML
+    void allerVersAbsenceAnterieur(MouseEvent event) {
+        try {
+            contenuPane.getChildren().clear();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/AbsenceAnterieur.fxml"));
+            Node node = (Node) fxmlLoader.load() ;
+            AnchorPane.setTopAnchor(node, 0.0);
+            AnchorPane.setLeftAnchor(node, 0.0);
+            AnchorPane.setRightAnchor(node, 0.0);
+            AnchorPane.setBottomAnchor(node, 0.0);
+            contenuPane.getChildren().setAll(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void deconnecter(MouseEvent event) {
         DatabaseConnection.deconnecter();
-        Stage currentStage = (Stage) seDeconnecter.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/SeConnecter.fxml"));
-        currentStage.setScene(fxmlLoader.load());
+        try {
+            Stage stage = (Stage) deconnecterBtn.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/SeConnecter.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            scene.setFill(Color.TRANSPARENT);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

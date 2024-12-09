@@ -1,16 +1,19 @@
 package absence.Controllers;
 
 import absence.Dao.UtilisateurDAO;
+import absence.Modeles.Utilisateur;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
@@ -56,16 +59,21 @@ public class SeConnecterController {
     }
     @FXML
     void connecter(ActionEvent event) {
-        String email = emailField.getText();
-        String password = passwordField.getText();
-        //System.out.println(emailField.getText());
-        //System.out.println(passwordField.getText());
+//        String email = emailField.getText();
+//        String password = passwordField.getText();
+        String email = "me@gmail.com";
+        String password = "2004";
+        Utilisateur utilisateur = utilisateurDAO.verifierLogin(email, password);
 
-        if (utilisateurDAO.verifierLogin(email, password) != null) {
-            Stage stage = (Stage) seConnecterBtn.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/rootPage.fxml"));
+        if (utilisateur != null) {
             try {
-                Scene scene = new Scene(fxmlLoader.load());
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/rootPage.fxml"));
+                Parent root = fxmlLoader.load();
+                RootPageController rootPageController = fxmlLoader.getController();
+                rootPageController.setUtilisateur(utilisateur);
+                Stage stage = (Stage) seConnecterBtn.getScene().getWindow();
+                Scene scene = new Scene(root);
+                scene.setFill(Color.TRANSPARENT);
                 stage.setScene(scene);
                 stage.setX(10);
                 stage.setY(10);

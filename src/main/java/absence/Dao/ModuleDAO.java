@@ -1,6 +1,6 @@
 package absence.Dao;
 
-import absence.Modele.Module;
+import absence.Modeles.Module;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -50,4 +50,18 @@ public class ModuleDAO {
             statement.executeUpdate();
         }
     }
+
+    public List<Module> getModuleParClasseProf(int id_prof , int id_classe) throws SQLException {
+        String sql = "SELECT m.id_module,m.nom_module FROM utilisateur u INNER JOIN enseigner e on e.ID_USER = u.ID_User INNER JOIN module m on m.id_module = e.id_module INNER JOIN classe_module cm on cm.id_module = m.id_module INNER JOIN classe c ON c.id_classe = cm.id_classe where u.id_user = ? and c.id_classe = ?";
+        List<Module> modules = new ArrayList<>();
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, id_prof);
+        statement.setInt(2, id_classe);
+       ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next()) {
+                modules.add(new Module(resultSet.getInt("ID_MODULE"), resultSet.getString("NOM_MODULE")));
+            }
+            return modules;
+    }
+
 }
