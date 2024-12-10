@@ -3,9 +3,11 @@ package absence.Controllers;
 import absence.Dao.AbsenceDAO;
 import absence.Modeles.AbsenceTableView;
 import io.github.palexdev.materialfx.controls.MFXTableColumn;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -53,12 +55,18 @@ public class AbsenceAnterieurController {
     @FXML
     private TableColumn<AbsenceTableView, String> columnMotif;
 
+    @FXML
+    private MFXTextField tfFiltre;
+
     private TableColumn<AbsenceTableView, Button> columnEdite;
 
     private ArrayList<AbsenceTableView> absenceListe;
+
     private AbsenceDAO absenceDAO;
 
     private ObservableList<AbsenceTableView> observableList;
+
+
 
     @FXML
     void initialize() {
@@ -116,6 +124,7 @@ public class AbsenceAnterieurController {
         });
         tableviewAbsence.getColumns().add(columnEdite);
         getAbsenceListe();
+        filtreTableViewAbsence();
     }
 
     public void getAbsenceListe() {
@@ -123,6 +132,37 @@ public class AbsenceAnterieurController {
         absenceListe = absenceDAO.getTousAbsences();
         observableList = FXCollections.observableList(absenceListe);
         tableviewAbsence.setItems(observableList);
+    }
+
+    public void filtreTableViewAbsence() {
+        FilteredList<AbsenceTableView> filteredList = new FilteredList(observableList, p -> true);
+        tfFiltre.textProperty().addListener((observable,oldValue,newValue)->{
+            filteredList.setPredicate(absence->{
+                if(newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (absence.getCne().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }else if(absence.getNomPrenom().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }else if(absence.getNomModule().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }else if(absence.getTypeSeance().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }else if(String.valueOf(absence.getDateAbsence()).toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }else if (absence.getHeures().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }else if(absence.getJustifie().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }else if(absence.getMotif().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }
+                return false;
+            });
+        });
+        tableviewAbsence.setItems(filteredList);
     }
 
     public void resizeTableView() {

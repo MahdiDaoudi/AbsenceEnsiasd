@@ -24,7 +24,7 @@
                   <Image url="@../asset/filtre.png" />
                </image>
             </ImageView>
-            <MFXTextField floatMode="BORDER" floatingText="Filtre" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" prefWidth="261.0" />
+            <MFXTextField fx:id="tfFiltre" floatMode="BORDER" floatingText="Filtre" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" prefWidth="261.0" />
          </children>
          <padding>
             <Insets left="20.0" />
