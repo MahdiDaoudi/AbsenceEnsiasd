@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="255.0" prefWidth="463.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.Controllers.AjouterFilierController">
+   <children>
+      <HBox alignment="CENTER" layoutX="-5.0" prefHeight="100.0" prefWidth="469.0" style="-fx-background-color: #60a5fa;">
+         <children>
+            <Label text="Ajouter Une Filiere" textFill="#eeeeee">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow height="41.52" radius="18.795" width="35.66" />
+         </effect>
+      </HBox>
+      <HBox alignment="CENTER" layoutY="100.0" prefHeight="155.0" prefWidth="463.0" spacing="15.0">
+         <children>
+            <MFXTextField fx:id="nomFiliere" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="34.0" prefWidth="218.0" promptText="Nom Filiere" />
+            <MFXButton fx:id="AnnulerFiliereBtn" onAction="#OnAnnulerAjoute" prefHeight="32.0" prefWidth="87.0" rippleColor="#7d7d7d" style="-fx-background-color: #eee;" text="Annuler" textFill="#777777">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </MFXButton>
+            <MFXButton fx:id="ajouterFiliereBtn" onAction="#OnAjouterFilier" prefHeight="32.0" prefWidth="79.0" rippleColor="#2563eb" style="-fx-background-color: #60a5fa;" text="Ajouter" textFill="#eeeeee">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.14509804546833038" green="0.38823530077934265" blue="0.9215686321258545" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </MFXButton>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
