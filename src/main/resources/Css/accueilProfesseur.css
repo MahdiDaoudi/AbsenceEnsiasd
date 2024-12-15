@@ -1,0 +1,48 @@
+/* fichier custom_piechart.css */
+.piechart .chart-pie-label {
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-fill: black;
+}
+
+.piechart .chart-pie {
+    -fx-pie-color: #00b0ff; /* Exemple : rouge pour les tranches */
+}
+
+.piechart .chart-pie-line {
+    -fx-stroke-width: 2;
+    -fx-stroke: black;
+}
+.default-color0.chart-pie { -fx-pie-color: #00aeff; }
+.default-color1.chart-pie { -fx-pie-color: #8a00e8; }
+
+.smooth-area-chart .chart-series-area-line {
+    -fx-stroke: #2196F3; /* Couleur de la ligne */
+    -fx-stroke-width: 2; /* Épaisseur de la ligne */
+    -fx-effect: dropshadow(gaussian, rgba(33, 150, 243, 0.5), 10, 0.5, 0, 0);
+}
+
+.smooth-area-chart .chart-series-area-fill {
+    -fx-fill: linear-gradient(from 0% 0% to 0% 100%, #64B5F6, rgba(100, 181, 246, 0.2));
+}
+
+.chart-plot-background {
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #e0e0e0;
+}
+
+.divChart{
+    -fx-background-radius: 10 10 10 10;
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-color: #ffffff;
+}
+.labelNombreAbsence{
+    -fx-font-size: 50;
+    -fx-font-weight: bold;
+}
+.labelInfoAbsence{
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Poppins';
+}
+

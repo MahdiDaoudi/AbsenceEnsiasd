@@ -59,9 +59,22 @@
                         </ImageView>
                     </children>
                 </VBox>
-                <VBox prefHeight="209.0" prefWidth="250.0" VBox.vgrow="ALWAYS">
+                <VBox fx:id="vboxLien" prefHeight="209.0" prefWidth="250.0" VBox.vgrow="ALWAYS">
                     <children>
-                  <HBox fx:id="accueilBtn" alignment="CENTER_LEFT" onMouseClicked="#allerVersAccueil" prefHeight="60.0" prefWidth="200.0" spacing="20.0" styleClass="sideBar-HboxButton">
+                  <HBox fx:id="accueilAdimeBtn" alignment="CENTER_LEFT" onMouseClicked="#allerVersAccueilAdmine" prefHeight="60.0" prefWidth="200.0" spacing="20.0" styleClass="sideBar-HboxButton">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asset/home.png" />
+                           </image>
+                        </ImageView>
+                        <Label id="titreGrid" styleClass="titreGrid" text="Accueil" />
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="accueilProfesseurBtn" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#allerVersAccueilProfesseur" prefHeight="60.0" prefWidth="200.0" spacing="20.0" styleClass="sideBar-HboxButton">
                      <children>
                         <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -160,6 +173,32 @@
                            </image>
                         </ImageView>
                         <Label styleClass="titreGrid" text="Emails envoyées" />
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="historiqueAbsence" alignment="CENTER_LEFT" layoutX="10.0" layoutY="292.0" onMouseClicked="#allerVersHistoriqueAbsence" prefHeight="60.0" prefWidth="200.0" spacing="20.0" styleClass="sideBar-HboxButton">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asset/absenceAnterieur.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="titreGrid" text="Historique Absence" />
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="profileBtn" alignment="CENTER_LEFT" layoutX="10.0" layoutY="392.0" onMouseClicked="#allerVersProfile" prefHeight="60.0" prefWidth="200.0" spacing="20.0" styleClass="sideBar-HboxButton">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asset/absenceAnterieur.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="titreGrid" text="Historique Absence" />
                      </children>
                      <padding>
                         <Insets left="30.0" />

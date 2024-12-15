@@ -79,18 +79,20 @@ public class UtilisateurDAO {
     }
 
     // Mise à jour d'un utilisateur
-    public void mettreAJourUtilisateur(Utilisateur utilisateur) {
+    public void mettreAJourUtilisateur(Utilisateur utilisateur) throws Exception {
         String sql = "UPDATE utilisateur SET NOM_USER = ?, PRENOM_USER = ?, EMAIL = ?, PASSWORD = ?, TELEPHONE = ?, ROLE = ? WHERE ID_User = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, utilisateur.getNOM_USER());
             preparedStatement.setString(2, utilisateur.getPRENOM_USER());
             preparedStatement.setString(3, utilisateur.getEMAIL());
-            preparedStatement.setString(4, utilisateur.getPASSWORD());
+            preparedStatement.setString(4, AESUtil.encrypt(utilisateur.getPASSWORD()));
             preparedStatement.setString(5, utilisateur.getTELEPHONE());
             preparedStatement.setString(6, utilisateur.getROLE());
             preparedStatement.setInt(7, utilisateur.getID_User());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
+        }catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -104,6 +106,30 @@ public class UtilisateurDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public Utilisateur getUtilisateur(int id_utilisateur) {
+        String sql = "SELECT * FROM utilisateur WHERE ID_User = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id_utilisateur);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int idUser = resultSet.getInt("ID_User");
+                String nomUser = resultSet.getString("NOM_USER");
+                String prenomUser = resultSet.getString("PRENOM_USER");
+                String telephone = resultSet.getString("TELEPHONE");
+                String email = resultSet.getString("EMAIL");
+                String password = resultSet.getString("PASSWORD");
+                String role = resultSet.getString("ROLE");
+
+                return new Utilisateur(idUser, nomUser, prenomUser, email, AESUtil.decrypt(password), telephone, role);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();        }
+        return null;
     }
 
 }

@@ -74,6 +74,19 @@ public class ClasseDAO {
         return classes;
     }
 
+    public  List<Classe> getClasseParNomFilier(String nomFiliere) throws SQLException {
+        List<Classe> classes = new ArrayList<>();
+        String sql = "SELECT * from classe INNER JOIN filiere on classe.ID_FILIERE = filiere.ID_FILIERE WHERE filiere.nom_filiere =?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, nomFiliere);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                classes.add(new Classe(resultSet.getInt("ID_CLASSE"), resultSet.getString("NOM_CLASSE"), resultSet.getInt("ID_FILIERE")));
+            }
+        }
+        return classes;
+    }
+
     public String obtenirNomClasseParId(int idClasse) throws SQLException {
         String sql = "SELECT NOM_CLASSE FROM classe WHERE ID_CLASSE = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -82,7 +95,7 @@ public class ClasseDAO {
                 if (resultSet.next()) {
                     return resultSet.getString("NOM_CLASSE");
                 } else {
-                    return null; // Si aucune classe n'est trouvée avec cet ID
+                    return null;
                 }
             }
         }

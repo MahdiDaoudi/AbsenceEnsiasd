@@ -7,10 +7,9 @@ import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ModifierAbsenceController {
 
@@ -49,7 +48,7 @@ public class ModifierAbsenceController {
             tfNomPrenom.setText(absenceTableView.getNomPrenom());
             tfMotif.setText(absenceTableView.getMotif());
             comboboxJustifie.getItems().addAll("Oui","Non");
-            comboboxJustifie.setText(absenceTableView.getJustifie());
+            comboboxJustifie.getSelectionModel().selectItem(absenceTableView.getJustifie());
         }
     }
 
@@ -72,6 +71,11 @@ public class ModifierAbsenceController {
         absenceAnterieurController.getAbsenceListe();
         Stage stage = (Stage) modifierBtn.getScene().getWindow();
         stage.close();
+        try {
+            Notification.getNotification("Absence Bien Modifie");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public AbsenceAnterieurController getAbsenceAnterieurController() {

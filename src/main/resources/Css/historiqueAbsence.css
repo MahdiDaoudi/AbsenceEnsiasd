@@ -1,0 +1,34 @@
+.topTitre{
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+}
+.paneTitre{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.09), 10, 0.5, 0, 4);
+}
+
+.table-view{
+    -fx-border-width: 1;
+    -fx-border-color: #eee;
+    -fx-border-radius: 7;
+    -fx-background-radius: 7;
+}
+
+.table-view .column-header .label {
+    -fx-pref-width: -1;
+    -fx-text-fill: #3498db;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-border-color: #aaa;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10 10 10 10;
+}
+
+.table-view .table-cell {
+    -fx-alignment: CENTER-LEFT;
+    -fx-padding: 5 10 5 10;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #eee;
+    -fx-text-fill: #000000;
+    -fx-background-color: #ffffff;
+    -fx-text-background-color: #000000;
+}

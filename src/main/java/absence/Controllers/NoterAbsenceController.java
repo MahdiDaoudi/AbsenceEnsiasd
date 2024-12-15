@@ -6,11 +6,14 @@ import absence.Modeles.Module;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCheckListView;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
+import io.github.palexdev.materialfx.theming.MaterialFXStylesheets;
+import io.github.palexdev.materialfx.theming.UserAgentBuilder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.util.StringConverter;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -63,6 +66,7 @@ public class NoterAbsenceController {
 
     @FXML
     public void initialize() throws SQLException {
+        UserAgentBuilder.builder().themes(MaterialFXStylesheets.forAssemble(true)).setDeploy(true).setResolveAssets(true).build().setGlobal();
         getFilieres();
         Map<String,LocalTime> map = getHeureDebutFinSeance();
         filierChange();
@@ -75,7 +79,8 @@ public class NoterAbsenceController {
         filieres = filiereDAO.obtenirToutesLesFilieres();
         if (filieres != null && !filieres.isEmpty()) {
             filierComboBox.getItems().setAll(filieres);
-        filierComboBox.setConverter(new StringConverter<Filiere>() {
+
+            filierComboBox.setConverter(new StringConverter<Filiere>() {
             @Override
             public String toString(Filiere filiere) {
                 if (filiere != null) {
@@ -185,7 +190,7 @@ public class NoterAbsenceController {
     }
 
     @FXML
-    void envoyer(ActionEvent event) throws SQLException {
+    void envoyer(ActionEvent event) throws SQLException, IOException {
         List<Etudiant> listEtudiantAbsences = checkListEtudiants.getSelectionModel().getSelectedValues();
         seanceDAO = new SeanceDAO();
         absenceDAO = new AbsenceDAO();
@@ -206,6 +211,7 @@ public class NoterAbsenceController {
             moduleComboBox.getItems().clear();
             seanceComboBox.getItems().clear();
             checkListEtudiants.getItems().clear();
+            Notification.getNotification("L'absence a été enregistrée avec succès.");
         }else{
             Seance seance = new Seance();
             seance.setDateSeance(LocalDate.now());
@@ -222,6 +228,7 @@ public class NoterAbsenceController {
             moduleComboBox.getItems().clear();
             seanceComboBox.getItems().clear();
             checkListEtudiants.getItems().clear();
+            Notification.getNotification("L'absence a été enregistrée avec succès.");
         }
     }
 

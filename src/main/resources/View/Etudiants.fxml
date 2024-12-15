@@ -1,15 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="950.0" style="-fx-background-color: #efefef;" stylesheets="@../Css/Etudiants.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.Controllers.EtudiantsController">
    <children>
-      <Label layoutX="399.0" layoutY="255.0" text="Etudiants">
-         <font>
-            <Font size="47.0" />
-         </font>
-      </Label>
+      <HBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="54.0" prefWidth="930.0" style="-fx-background-color: #fff;" styleClass="paneTitre" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <Label styleClass="topTitre" text="Etudiants" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="69.0" prefHeight="82.0" prefWidth="440.0" spacing="5.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="68.0">
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../asset/filtre.png" />
+                     </image>
+                  </ImageView>
+                  <MFXTextField fx:id="tfFiltre" floatMode="BORDER" floatingText="Filtre" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" prefWidth="261.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="30.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <MFXButton fx:id="ajouterBtn" onAction="#ajouter" prefHeight="35.0" prefWidth="205.0" styleClass="buttonAjouterEtudiant" text="Ajouter Etudiant" textFill="WHITE" />
+               </children>
+               <padding>
+                  <Insets right="20.0" />
+               </padding>
+            </HBox>
+         </children>
+      </HBox>
+      <TableView fx:id="tableviewEtudiants" layoutX="14.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="11.333333333333371" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
+         <columns>
+            <TableColumn fx:id="columnCne" maxWidth="1.7976931348623157E308" minWidth="-Infinity" resizable="false" text="CNE" />
+            <TableColumn fx:id="columnNomPrenom" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="113.0" resizable="false" text="Nom Prenom" />
+            <TableColumn fx:id="columnFiliere" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="150.0" resizable="false" text="Filiere" />
+            <TableColumn fx:id="columnClasse" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="120.0" resizable="false" text="Classe" />
+            <TableColumn fx:id="columnSexe" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="70.0" resizable="false" text="Sexe" />
+            <TableColumn fx:id="columnTelephone" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="90.0" resizable="false" text="Telephone" />
+            <TableColumn fx:id="columnEmail" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="130.0" resizable="false" text="Email" />
+         </columns>
+      </TableView>
    </children>
-</Pane>
+</AnchorPane>

@@ -4,6 +4,8 @@ import absence.Dao.AbsenceDAO;
 import absence.Dao.ClasseDAO;
 import absence.Dao.EnvoiMailDAO;
 import absence.Modeles.EtudiantAVertissement;
+import io.github.palexdev.materialfx.theming.MaterialFXStylesheets;
+import io.github.palexdev.materialfx.theming.UserAgentBuilder;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
@@ -43,7 +45,7 @@ public class EtudiantAVertissementController {
 
     @FXML
     public void initialize() {
-        System.out.println("Initialisation de la vue des étudiants avec avertissements");
+        UserAgentBuilder.builder().themes(MaterialFXStylesheets.forAssemble(true)).setDeploy(true).setResolveAssets(true).build().setGlobal();
 
         // Configuration des colonnes de la TableView
         colNom.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getEtudiant().getNomEtudiant()));
@@ -63,12 +65,8 @@ public class EtudiantAVertissementController {
 
         // Récupérer les absences des étudiants et les informations complètes
         List<EtudiantAVertissement> absencesList = absenceDAO.getAbsencesParEtudiant();
-        System.out.println("Données récupérées depuis le DAO : " + absencesList);
-
         // Filtrage : ne garder que les absences > 8 heures
         absencesList.removeIf(etudiant -> etudiant.getNombreAbscence() < 8);
-        System.out.println("Liste après filtrage des absences supérieures à 8 : " + absencesList.size());
-
         // Boucler sur la liste pour ajouter les messages selon les absences
         for (EtudiantAVertissement etudiant : absencesList) {
             // Récupérer le message basé sur le nombre d'absences
@@ -76,7 +74,6 @@ public class EtudiantAVertissementController {
             // Assigner le message à l'étudiant
             etudiant.setMessage(message);
             // Affichage du message pour chaque étudiant
-            System.out.println("Message pour " + etudiant.getEtudiant().getNomEtudiant() + ": " + message);
         }
 
         // Ajouter les données filtrées et enrichies à la TableView
@@ -86,14 +83,6 @@ public class EtudiantAVertissementController {
         colEnvoyerMail.setCellFactory(col -> new TableCell<EtudiantAVertissement, Void>() {
             private final Button btnEnvoyer = new Button("Envoyer");
             {
-                // Personnalisation du bouton
-                btnEnvoyer.setStyle("-fx-background-color: #88c78b; -fx-text-fill: white; -fx-padding: 10px 20px; -fx-font-size: 14px; -fx-border-radius: 10px; -fx-cursor: hand;");
-
-                // Ajouter un effet au survol
-                btnEnvoyer.setOnMouseEntered(event -> btnEnvoyer.setStyle("-fx-background-color: #58c55d; -fx-text-fill: white; -fx-padding: 10px 20px; -fx-font-size: 14px; -fx-border-radius: 10px; -fx-cursor: hand;"));
-                btnEnvoyer.setOnMouseExited(event -> btnEnvoyer.setStyle("-fx-background-color: #88c78b; -fx-text-fill: white; -fx-padding: 10px 20px; -fx-font-size: 14px; -fx-border-radius: 10px; -fx-cursor: hand;"));
-
-                // Action lors du clic sur le bouton
                 btnEnvoyer.setOnAction(event -> handleEnvoyerMail(getTableRow().getIndex()));
             }
 
@@ -107,6 +96,7 @@ public class EtudiantAVertissementController {
                 }
             }
         });
+        tableViewAbsences.widthProperty().addListener(((observable, oldValue, newValue) -> resizeTableView()));
     }
 
     /**
@@ -162,5 +152,13 @@ public class EtudiantAVertissementController {
                 successDialog.showAndWait();
             }
         });
+    }
+
+    public void resizeTableView() {
+        double totalWidth = tableViewAbsences.getWidth();
+
+        for (TableColumn column : tableViewAbsences.getColumns()) {
+            column.setPrefWidth(totalWidth/8);
+        }
     }
 }

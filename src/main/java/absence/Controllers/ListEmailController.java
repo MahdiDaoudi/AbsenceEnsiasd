@@ -2,6 +2,8 @@ package absence.Controllers;
 
 import absence.Dao.EnvoiMailDAO;
 import absence.Modeles.EnvoiMail;
+import io.github.palexdev.materialfx.theming.MaterialFXStylesheets;
+import io.github.palexdev.materialfx.theming.UserAgentBuilder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,6 +26,8 @@ public class ListEmailController {
 
     @FXML
     private void initialize() {
+        System.out.println("Hello");
+        UserAgentBuilder.builder().themes(MaterialFXStylesheets.forAssemble(true)).setDeploy(true).setResolveAssets(true).build().setGlobal();
         // Initialiser les colonnes de la TableView avec des CellValueFactories adaptées aux getters
         colDestinataire.setCellValueFactory(cellData -> {
             return new javafx.beans.property.SimpleStringProperty(cellData.getValue().getEmailDestinataire());
@@ -39,6 +43,15 @@ public class ListEmailController {
 
         // Remplir la TableView avec les envois récupérés
         ObservableList<EnvoiMail> envoisObservableList = FXCollections.observableArrayList(envoiMailDAO.recupererEnvois());
-        tableView.setItems(envoisObservableList); // Remplir la TableView avec les données
+        tableView.getItems().setAll(envoisObservableList);// Remplir la TableView avec les données
+        tableView.widthProperty().addListener(((observable, oldValue, newValue) -> resizeTableView()));
+    }
+
+    public void resizeTableView() {
+        double totalWidth = tableView.getWidth();
+
+        for (TableColumn column : tableView.getColumns()) {
+            column.setPrefWidth(totalWidth/3);
+        }
     }
 }

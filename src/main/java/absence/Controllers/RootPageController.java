@@ -2,9 +2,13 @@ package absence.Controllers;
 
 import absence.Dao.DatabaseConnection;
 import absence.Modeles.Utilisateur;
+import io.github.palexdev.materialfx.theming.JavaFXThemes;
+import io.github.palexdev.materialfx.theming.MaterialFXStylesheets;
+import io.github.palexdev.materialfx.theming.UserAgentBuilder;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -33,7 +37,10 @@ public class RootPageController {
     private AnchorPane contenuPane;
 
     @FXML
-    private HBox accueilBtn;
+    private HBox accueilAdimeBtn;
+
+    @FXML
+    private HBox accueilProfesseurBtn;
 
     @FXML
     private HBox adminsBtn;
@@ -62,6 +69,16 @@ public class RootPageController {
     @FXML
     private HBox avertissementbtn;
 
+    @FXML
+    private HBox historiqueAbsence;
+
+    @FXML
+    private HBox profileBtn;
+
+    @FXML
+    private VBox vboxLien;
+
+
     private double x=0,y=0;
 
 
@@ -74,6 +91,7 @@ public class RootPageController {
         this.utilisateur = utilisateur;
         if (utilisateur != null) {
             nomPrenomUtilisateur.setText(utilisateur.getPRENOM_USER().charAt(0) + "." + utilisateur.getNOM_USER());
+            vboxLien.getChildren().remove(avertissementbtn);
         }
     }
 
@@ -81,6 +99,7 @@ public class RootPageController {
     @FXML
     public void initialize() {
         try {
+            UserAgentBuilder.builder().themes(MaterialFXStylesheets.forAssemble(true)).setDeploy(true).setResolveAssets(true).build().setGlobal();
             Node node = (Node) FXMLLoader.load(getClass().getResource("/View/AccueilAdmin.fxml"));
             AnchorPane.setTopAnchor(node, 0.0);
             AnchorPane.setLeftAnchor(node, 0.0);
@@ -131,10 +150,34 @@ public class RootPageController {
     }
 
     @FXML
-    void allerVersAccueil(MouseEvent event) {
+    void allerVersAccueilAdmine(MouseEvent event) {
         try {
             contenuPane.getChildren().clear();
             Node node = (Node) FXMLLoader.load(getClass().getResource("/View/AccueilAdmin.fxml"));
+            AnchorPane.setTopAnchor(node, 0.0);
+            AnchorPane.setLeftAnchor(node, 0.0);
+            AnchorPane.setRightAnchor(node, 0.0);
+            AnchorPane.setBottomAnchor(node, 0.0);
+            contenuPane.getChildren().setAll(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void allerVersAccueilProfesseur(MouseEvent event) {
+        try {
+            UserAgentBuilder.builder()
+                    .themes(JavaFXThemes.MODENA) // Passe null pour retirer le thème
+                    .setDeploy(true)
+                    .setResolveAssets(true)
+                    .build()
+                    .setGlobal();
+            contenuPane.getChildren().clear();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/AccueilProfesseur.fxml"));
+            Node node = (Node) fxmlLoader.load();
+            AccueilProfesseurController accueilProfesseurController = fxmlLoader.getController();
+            accueilProfesseurController.setUtilisateur(utilisateur);
             AnchorPane.setTopAnchor(node, 0.0);
             AnchorPane.setLeftAnchor(node, 0.0);
             AnchorPane.setRightAnchor(node, 0.0);
@@ -175,9 +218,15 @@ public class RootPageController {
 
     @FXML
     void allerVersEtudiants(MouseEvent event) {
-        contenuPane.getChildren().clear();
         try {
-            contenuPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("/View/Etudiants.fxml")));
+            contenuPane.getChildren().clear();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Etudiants.fxml"));
+            Node node = (Node) fxmlLoader.load();
+            AnchorPane.setTopAnchor(node, 0.0);
+            AnchorPane.setLeftAnchor(node, 0.0);
+            AnchorPane.setRightAnchor(node, 0.0);
+            AnchorPane.setBottomAnchor(node, 0.0);
+            contenuPane.getChildren().setAll(node);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -211,9 +260,15 @@ public class RootPageController {
 
     @FXML
     void allerVersAvertissement(MouseEvent event) {
-        contenuPane.getChildren().clear();
         try {
-            contenuPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("/View/AVertissement.fxml")));
+            contenuPane.getChildren().clear();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/AVertissement.fxml"));
+            Node node = (Node) fxmlLoader.load() ;
+            AnchorPane.setTopAnchor(node, 0.0);
+            AnchorPane.setLeftAnchor(node, 0.0);
+            AnchorPane.setRightAnchor(node, 0.0);
+            AnchorPane.setBottomAnchor(node, 0.0);
+            contenuPane.getChildren().setAll(node);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -221,9 +276,49 @@ public class RootPageController {
 
     @FXML
     void allerVersListEmails(MouseEvent event) {
-        contenuPane.getChildren().clear();
         try {
-            contenuPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("/View/ListEmail.fxml")));
+            contenuPane.getChildren().clear();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/ListEmail.fxml"));
+            Node node = (Node) fxmlLoader.load();
+            AnchorPane.setTopAnchor(node, 0.0);
+            AnchorPane.setLeftAnchor(node, 0.0);
+            AnchorPane.setRightAnchor(node, 0.0);
+            AnchorPane.setBottomAnchor(node, 0.0);
+            contenuPane.getChildren().setAll(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void allerVersHistoriqueAbsence(MouseEvent event) {
+        try {
+            contenuPane.getChildren().clear();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/HistoriqueAbsence.fxml"));
+            Node node = (Node) fxmlLoader.load();
+            AnchorPane.setTopAnchor(node, 0.0);
+            AnchorPane.setLeftAnchor(node, 0.0);
+            AnchorPane.setRightAnchor(node, 0.0);
+            AnchorPane.setBottomAnchor(node, 0.0);
+            contenuPane.getChildren().setAll(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
+    void allerVersProfile(MouseEvent event) {
+        try {
+            contenuPane.getChildren().clear();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Profile.fxml"));
+            Node node = (Node) fxmlLoader.load();
+            ProfileController profileController = fxmlLoader.getController();
+            profileController.setUtilisateur(utilisateur);
+            profileController.setRootPageController(this);
+            AnchorPane.setTopAnchor(node, 0.0);
+            AnchorPane.setLeftAnchor(node, 0.0);
+            AnchorPane.setRightAnchor(node, 0.0);
+            AnchorPane.setBottomAnchor(node, 0.0);
+            contenuPane.getChildren().setAll(node);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

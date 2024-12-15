@@ -9,6 +9,7 @@ import absence.Modeles.EtudiantAVertissement;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class AbsenceDAO {
@@ -252,6 +253,55 @@ public class AbsenceDAO {
             e.printStackTrace();
         }
         return absencesList;
+    }
+
+    public HashMap<String,Integer> getNombreAbsenceParModule(int id_proffeseur){
+        HashMap<String,Integer> listeNombreAbsenceParModule = new HashMap<>();
+        String query = "select m.nom_module, count(a.id_absence) as nombre_absences " +
+                "from absence a " +
+                "join seance s on a.id_seance = s.id_seance " +
+                "join module m on s.id_module = m.id_module " +
+                "join enseigner e on m.id_module = e.id_module " +
+                "join utilisateur u on e.id_user = u.id_user " +
+                "where u.id_user = ? " +
+                "group by m.nom_module;";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setInt(1, id_proffeseur);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                listeNombreAbsenceParModule.put(resultSet.getString("nom_module"), resultSet.getInt("nombre_absences"));
+                System.out.println(resultSet.getString("nom_module")+" "+ resultSet.getInt("nombre_absences"));
+            }
+            return listeNombreAbsenceParModule;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public HashMap<String,Integer> getNombreAbsenceParSexe(int id_proffeseur){
+        HashMap<String,Integer> listeNombreAbsenceParModule = new HashMap<>();
+        String query = "SELECT e.sexe, COUNT(a.id_absence) AS nombre_absences " +
+                "FROM etudiant e " +
+                "JOIN absence a ON a.cne = e.cne " +
+                "JOIN seance s ON a.id_seance = s.id_seance " +
+                "JOIN module m ON s.id_module = m.id_module " +
+                "JOIN enseigner en ON m.id_module = en.id_module " +
+                "JOIN utilisateur u ON en.id_user = u.id_user " +
+                "WHERE u.id_user = ? " +
+                "GROUP BY e.sexe; ";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setInt(1, id_proffeseur);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                listeNombreAbsenceParModule.put(resultSet.getString("sexe"), resultSet.getInt("nombre_absences"));
+                System.out.println(resultSet.getString("sexe")+" "+ resultSet.getInt("nombre_absences"));
+            }
+            return listeNombreAbsenceParModule;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

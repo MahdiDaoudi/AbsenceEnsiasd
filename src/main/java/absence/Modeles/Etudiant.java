@@ -7,6 +7,8 @@ public class Etudiant {
     private String telephone;
     private String sexe;
     private int idClasse;
+    private String nomClasse;
+    private String nomFiliere;
 
     // Constructeur
     public Etudiant(String cne, String nomEtudiant, String prenomEtudiant, String email,
@@ -18,6 +20,18 @@ public class Etudiant {
         this.telephone = telephone;
         this.sexe = sexe;
         this.idClasse = idClasse;
+    }
+
+    public Etudiant(String cne, String nomEtudiant, String prenomEtudiant, String email, String telephone, String sexe, int idClasse,String nomFiliere, String nomClasse) {
+        this.cne = cne;
+        this.nomEtudiant = nomEtudiant;
+        this.prenomEtudiant = prenomEtudiant;
+        this.email = email;
+        this.telephone = telephone;
+        this.sexe = sexe;
+        this.idClasse = idClasse;
+        this.nomClasse = nomClasse;
+        this.nomFiliere = nomFiliere;
     }
 
     // Getters et Setters
@@ -79,9 +93,29 @@ public class Etudiant {
         this.idClasse = idClasse;
     }
 
+    public String getNomClasse() {
+        return nomClasse;
+    }
+
+    public void setNomClasse(String nomClasse) {
+        this.nomClasse = nomClasse;
+    }
+
     // Méthode toString pour afficher un étudiant
     public String toString() {
         return "Etudiant [ID=" + cne + ", Nom=" + nomEtudiant + ", Prenom=" + prenomEtudiant +
                 ", Email=" + email + ", Téléphone=" + telephone + ", Sexe=" + sexe + ", Classe ID=" + idClasse + "]";
+    }
+
+    public String getNomFiliere() {
+        return nomFiliere;
+    }
+
+    public void setNomFiliere(String nomFiliere) {
+        this.nomFiliere = nomFiliere;
+    }
+
+    public String getNomComplet(){
+        return nomEtudiant +" "+prenomEtudiant;
     }
 }

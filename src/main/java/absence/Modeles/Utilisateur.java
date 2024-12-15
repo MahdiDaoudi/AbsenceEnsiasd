@@ -48,6 +48,34 @@ Utilisateur {
         return ROLE;
     }
 
+    public void setID_User(int ID_User) {
+        this.ID_User = ID_User;
+    }
+
+    public void setROLE(String ROLE) {
+        this.ROLE = ROLE;
+    }
+
+    public void setTELEPHONE(String TELEPHONE) {
+        this.TELEPHONE = TELEPHONE;
+    }
+
+    public void setPASSWORD(String PASSWORD) {
+        this.PASSWORD = PASSWORD;
+    }
+
+    public void setEMAIL(String EMAIL) {
+        this.EMAIL = EMAIL;
+    }
+
+    public void setPRENOM_USER(String PRENOM_USER) {
+        this.PRENOM_USER = PRENOM_USER;
+    }
+
+    public void setNOM_USER(String NOM_USER) {
+        this.NOM_USER = NOM_USER;
+    }
+
     @Override
     public String toString() {
         return "Utilisateur [ID_User=" + ID_User + ", NOM_USER=" + NOM_USER + ", PRENOM_USER=" + PRENOM_USER + ", EMAIL=" + EMAIL + ", TELEPHONE=" + TELEPHONE + ", ROLE=" + ROLE + "]";

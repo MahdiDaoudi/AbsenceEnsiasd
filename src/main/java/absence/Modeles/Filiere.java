@@ -9,6 +9,8 @@ public class Filiere {
         this.nomFiliere = nomFiliere;
     }
 
+    public Filiere() {}
+
     public int getIdFiliere() {
         return idFiliere;
     }
