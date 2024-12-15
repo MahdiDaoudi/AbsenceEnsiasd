@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="207.0" prefWidth="434.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.Controllers.SupprimerProfController">
+   <children>
+      <HBox alignment="CENTER" layoutY="1.0" prefHeight="88.0" prefWidth="434.0">
+         <children>
+            <Label text="Confirmez-vous la suppression de ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="nomProfesseur" text="Ismail Mrika">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutY="94.0" prefHeight="78.0" prefWidth="434.0" spacing="15.0">
+         <children>
+            <MFXButton fx:id="annuler" onAction="#anuller" prefHeight="31.0" prefWidth="91.0" style="-fx-background-color: #d6d3d1;" text="Annuler" />
+            <MFXButton fx:id="supprimer" onAction="#OnSupprimer" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: #dc2626;" text="Supprimer" textFill="WHITE" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

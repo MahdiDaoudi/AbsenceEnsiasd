@@ -1,6 +1,6 @@
 package absence.Controllers;
 
-import absence.Dao.DatabaseConnection;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import absence.Modeles.Utilisateur;
 import io.github.palexdev.materialfx.theming.JavaFXThemes;
 import io.github.palexdev.materialfx.theming.MaterialFXStylesheets;
@@ -34,6 +34,9 @@ public class RootPageController {
     private Circle reduireBtn;
 
     @FXML
+    private HBox deconnecterBtn;
+
+    @FXML
     private AnchorPane contenuPane;
 
     @FXML
@@ -46,31 +49,23 @@ public class RootPageController {
     private HBox adminsBtn;
 
     @FXML
+    private HBox classeEtFilier;
+
+    @FXML
     private HBox etudiantsBtn;
-
-    @FXML
-    private HBox deconnecterBtn;
-
-    @FXML
-    private HBox absenceAnterieurBtn;
-
-    @FXML
-    private HBox professeursBtn;
-
-    @FXML
-    private HBox noteAbsenceBtn;
 
     @FXML
     private Text nomPrenomUtilisateur;
 
     @FXML
-    private HBox listemailBtn;
-
-    @FXML
-    private HBox avertissementbtn;
+    private HBox professeursBtn;
+    @FXML private MFXButton seDeconnecter;
 
     @FXML
     private HBox historiqueAbsence;
+
+    @FXML
+    private HBox avertissementbtn;
 
     @FXML
     private HBox profileBtn;
@@ -192,25 +187,12 @@ public class RootPageController {
     void allerVersAdmins(MouseEvent event) {
         contenuPane.getChildren().clear();
         try {
-            contenuPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("/View/Admins.fxml")));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @FXML
-    void allerVersNoteAbsence(MouseEvent event) {
-        try {
-            contenuPane.getChildren().clear();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/NoteAbsence.fxml"));
-            Node node = (Node) fxmlLoader.load() ;
-            NoterAbsenceController noterAbsenceController = fxmlLoader.getController();
-            noterAbsenceController.setUtilisateur(utilisateur);
-            AnchorPane.setTopAnchor(node, 0.0);
-            AnchorPane.setLeftAnchor(node, 0.0);
-            AnchorPane.setRightAnchor(node, 0.0);
-            AnchorPane.setBottomAnchor(node, 0.0);
-            contenuPane.getChildren().setAll(node);
+            Node node = (Node) FXMLLoader.load(getClass().getResource("/View/Admins.fxml"));
+            AnchorPane.setTopAnchor(node,0.0);
+            AnchorPane.setRightAnchor(node,0.0);
+            AnchorPane.setLeftAnchor(node,0.0);
+            AnchorPane.setBottomAnchor(node,0.0);
+            contenuPane.getChildren().setAll(node );
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -232,10 +214,23 @@ public class RootPageController {
         }
     }
 
+
+
     @FXML
     void allerVersProfesseur(MouseEvent event) {
         contenuPane.getChildren().clear();
         try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Professeur.fxml"));
+            Parent root = fxmlLoader.load();
+//            ProfController profController= fxmlLoader.getController();
+//            profController.setProfController(profController);
+            AnchorPane.setTopAnchor(root,0.0);
+            AnchorPane.setBottomAnchor(root,0.0);
+            AnchorPane.setLeftAnchor(root,0.0);
+            AnchorPane.setRightAnchor(root,0.0);
+
+            contenuPane.getChildren().setAll(root) ;
+
             contenuPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("/View/Professeur.fxml")));
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -271,6 +266,23 @@ public class RootPageController {
             contenuPane.getChildren().setAll(node);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+
+    @FXML
+    void allerVersClasseEtFilier(MouseEvent event) {
+    contenuPane.getChildren().clear();
+    try {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/FilierEtClasse.fxml"));
+        Parent root = fxmlLoader.load();
+        AnchorPane.setTopAnchor(root,0.0);
+        AnchorPane.setBottomAnchor(root,0.0);
+        AnchorPane.setLeftAnchor(root,0.0);
+        AnchorPane.setRightAnchor(root,0.0);
+        contenuPane.getChildren().setAll(root);
+    }catch(IOException e) {
+
         }
     }
 

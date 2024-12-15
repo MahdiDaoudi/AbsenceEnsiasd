@@ -34,6 +34,25 @@ public class FiliereDAO {
         }
         return filieres;
     }
+    public Filiere getFiliereById(int id) {
+        Filiere filiere = null;
+        try {
+            String query = "SELECT * FROM filiere WHERE id = ?";
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, id);
+
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                filiere = new Filiere();
+                filiere.setIdFiliere(rs.getInt("id"));
+                filiere.setNomFiliere(rs.getString("nom"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return filiere;
+    }
 
     public void modifierFiliere(int idFiliere, String nomFiliere) throws SQLException {
         String sql = "UPDATE filiere SET NOM_FILIERE = ? WHERE ID_FILIERE = ?";

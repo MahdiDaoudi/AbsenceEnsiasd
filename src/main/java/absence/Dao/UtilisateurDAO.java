@@ -1,6 +1,5 @@
 package absence.Dao;
 
-import absence.Controllers.AESUtil;
 import absence.Modeles.Utilisateur;
 
 import java.sql.*;
@@ -16,11 +15,12 @@ public class UtilisateurDAO {
        connection=DatabaseConnection.getConnection();
     }
 
+    // Vérification des informations de connexion (email et mot de passe)
     public Utilisateur verifierLogin(String email, String password) {
         String sql = "SELECT * FROM utilisateur WHERE EMAIL = ? AND PASSWORD = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, email);
-            preparedStatement.setString(2, AESUtil.encrypt(password));
+            preparedStatement.setString(2, password);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -35,8 +35,7 @@ public class UtilisateurDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();        }
+        }
         return null;  // Retourne null si l'utilisateur n'est pas trouvé
     }
 
@@ -76,6 +75,49 @@ public class UtilisateurDAO {
             e.printStackTrace();
         }
         return utilisateurs;
+    }
+
+    public List<Utilisateur> getProfesseurs() {
+        List<Utilisateur> professeurs = new ArrayList<>();
+        String sql = "SELECT * FROM utilisateur where role = ? ";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1,"PROFESSEUR");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int idUser = resultSet.getInt("ID_User");
+                String nomUser = resultSet.getString("NOM_USER");
+                String prenomUser = resultSet.getString("PRENOM_USER");
+                String email = resultSet.getString("EMAIL");
+                String password = resultSet.getString("PASSWORD");
+                String telephone = resultSet.getString("TELEPHONE");
+                String role = resultSet.getString("ROLE");
+                professeurs.add(new Utilisateur(idUser, nomUser, prenomUser, email, password, telephone, role));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return professeurs;
+    }
+    public List<Utilisateur> getAdmins() {
+        List<Utilisateur> admins = new ArrayList<>();
+        String sql = "SELECT * FROM utilisateur where role = ? ";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1,"ADMIN");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int idUser = resultSet.getInt("ID_User");
+                String nomUser = resultSet.getString("NOM_USER");
+                String prenomUser = resultSet.getString("PRENOM_USER");
+                String email = resultSet.getString("EMAIL");
+                String password = resultSet.getString("PASSWORD");
+                String telephone = resultSet.getString("TELEPHONE");
+                String role = resultSet.getString("ROLE");
+                admins.add(new Utilisateur(idUser, nomUser, prenomUser, email, password, telephone, role));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return admins;
     }
 
     // Mise à jour d'un utilisateur

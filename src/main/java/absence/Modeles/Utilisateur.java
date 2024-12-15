@@ -19,6 +19,10 @@ Utilisateur {
         this.ROLE = ROLE;
     }
 
+    public Utilisateur() {
+
+    }
+
     // Getters et Setters
     public int getID_User() {
         return ID_User;
@@ -79,5 +83,33 @@ Utilisateur {
     @Override
     public String toString() {
         return "Utilisateur [ID_User=" + ID_User + ", NOM_USER=" + NOM_USER + ", PRENOM_USER=" + PRENOM_USER + ", EMAIL=" + EMAIL + ", TELEPHONE=" + TELEPHONE + ", ROLE=" + ROLE + "]";
+    }
+
+    public void setID_User(int iD_User) {
+        ID_User = iD_User;
+    }
+
+    public void setNOM_USER(String nOM_USER) {
+        NOM_USER = nOM_USER;
+    }
+
+    public void setPRENOM_USER(String pRENOM_USER) {
+        PRENOM_USER = pRENOM_USER;
+    }
+
+    public void setEMAIL(String eMAIL) {
+        EMAIL = eMAIL;
+    }
+
+    public void setPASSWORD(String pASSWORD) {
+        PASSWORD = pASSWORD;
+    }
+
+    public void setTELEPHONE(String tELEPHONE) {
+        TELEPHONE = tELEPHONE;
+    }
+
+    public void setROLE(String rOLE) {
+        ROLE = rOLE;
     }
 }
