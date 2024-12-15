@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
@@ -35,6 +36,10 @@ public class RootPageController {
 
     @FXML
     private HBox adminsBtn;
+
+
+    @FXML
+    private HBox classeEtFilier;
 
     @FXML
     private HBox etudiantsBtn;
@@ -102,7 +107,12 @@ public class RootPageController {
     void allerVersAdmins(MouseEvent event) {
         contenuPane.getChildren().clear();
         try {
-            contenuPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("/View/Admins.fxml")));
+            Node node = (Node) FXMLLoader.load(getClass().getResource("/View/Admins.fxml"));
+            AnchorPane.setTopAnchor(node,0.0);
+            AnchorPane.setRightAnchor(node,0.0);
+            AnchorPane.setLeftAnchor(node,0.0);
+            AnchorPane.setBottomAnchor(node,0.0);
+            contenuPane.getChildren().setAll(node );
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -118,14 +128,43 @@ public class RootPageController {
         }
     }
 
+
+
     @FXML
     void allerVersProfesseur(MouseEvent event) {
         contenuPane.getChildren().clear();
         try {
-            contenuPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("/View/Professeur.fxml")));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Professeur.fxml"));
+            Parent root = fxmlLoader.load();
+//            ProfController profController= fxmlLoader.getController();
+//            profController.setProfController(profController);
+            AnchorPane.setTopAnchor(root,0.0);
+            AnchorPane.setBottomAnchor(root,0.0);
+            AnchorPane.setLeftAnchor(root,0.0);
+            AnchorPane.setRightAnchor(root,0.0);
+
+            contenuPane.getChildren().setAll(root) ;
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+
+    @FXML
+    void allerVersClasseEtFilier(MouseEvent event) {
+    contenuPane.getChildren().clear();
+    try {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/FilierEtClasse.fxml"));
+        Parent root = fxmlLoader.load();
+        AnchorPane.setTopAnchor(root,0.0);
+        AnchorPane.setBottomAnchor(root,0.0);
+        AnchorPane.setLeftAnchor(root,0.0);
+        AnchorPane.setRightAnchor(root,0.0);
+        contenuPane.getChildren().setAll(root);
+    }catch(IOException e) {
+
+    }
     }
 
     public void deconnecter(ActionEvent actionEvent) throws IOException {

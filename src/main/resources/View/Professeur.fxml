@@ -1,15 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label layoutX="399.0" layoutY="255.0" text="Professeur">
-         <font>
-            <Font size="47.0" />
-         </font>
-      </Label>
-   </children>
-</Pane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="941.0" style="-fx-background-color: #eee;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.Controllers.ProfController">
+   <top>
+      <HBox prefHeight="47.0" prefWidth="949.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" minHeight="10.0" prefHeight="37.0" prefWidth="116.0" style="-fx-padding: 10;" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Professeur">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="6.0" left="8.0" top="4.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="825.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <MFXButton fx:id="ajouterProfBtn" onAction="#ajouterProf" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #0284c7;" text="Ajouter Prof" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </MFXButton>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="12.0" prefWidth="931.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <VBox prefHeight="515.0" prefWidth="939.0">
+               <children>
+                  <ScrollPane fitToWidth="true" prefHeight="525.0" prefWidth="939.0" vbarPolicy="NEVER">
+                     <content>
+                        <FlowPane fx:id="profLayout" alignment="CENTER" hgap="10.0" prefHeight="509.0" prefWidth="933.0" style="-fx-background-color: #eee;" vgap="10.0">
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                        </FlowPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+</BorderPane>

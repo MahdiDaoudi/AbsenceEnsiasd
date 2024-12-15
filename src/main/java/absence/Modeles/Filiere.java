@@ -1,9 +1,12 @@
-package absence.Modele;
+package absence.Modeles;
 
 public class Filiere {
     private int idFiliere;
     private String nomFiliere;
 
+    public Filiere() {
+
+    }
     public Filiere(int idFiliere, String nomFiliere) {
         this.idFiliere = idFiliere;
         this.nomFiliere = nomFiliere;

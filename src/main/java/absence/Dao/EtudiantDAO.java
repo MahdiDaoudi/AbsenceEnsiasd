@@ -1,6 +1,6 @@
 package absence.Dao;
 
-import absence.Modele.Etudiant;
+import absence.Modeles.Etudiant;
 
 import java.sql.*;
 import java.sql.Connection;

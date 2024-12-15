@@ -1,6 +1,6 @@
 package absence.Dao;
 
-import absence.Modele.Seance;
+import absence.Modeles.Seance;
 
 import java.sql.*;
 import java.time.LocalDateTime;

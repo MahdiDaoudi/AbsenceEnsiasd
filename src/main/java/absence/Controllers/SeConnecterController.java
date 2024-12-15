@@ -58,6 +58,7 @@ public class SeConnecterController {
     void connecter(ActionEvent event) {
         String email = emailField.getText();
         String password = passwordField.getText();
+        
         //System.out.println(emailField.getText());
         //System.out.println(passwordField.getText());
 

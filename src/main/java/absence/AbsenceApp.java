@@ -1,5 +1,6 @@
 package absence;
 
+import absence.Controllers.ControllerModifierProf;
 import io.github.palexdev.materialfx.theming.MaterialFXStylesheets;
 import io.github.palexdev.materialfx.theming.UserAgentBuilder;
 import javafx.application.Application;

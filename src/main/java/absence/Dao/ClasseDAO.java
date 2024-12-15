@@ -1,6 +1,6 @@
 package absence.Dao;
 
-import absence.Modele.Classe;
+import absence.Modeles.Classe;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package absence.Modele;
+package absence.Modeles;
 
 import java.time.LocalDateTime;
 

@@ -2,7 +2,7 @@ package absence.Dao;
 
 
 
-import absence.Modele.Absence;
+import absence.Modeles.Absence;
 
 import java.sql.*;
 import java.util.ArrayList;

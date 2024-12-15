@@ -1,6 +1,6 @@
 package absence.Dao;
 
-import absence.Modele.Utilisateur;
+import absence.Modeles.Utilisateur;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -75,6 +75,49 @@ public class UtilisateurDAO {
             e.printStackTrace();
         }
         return utilisateurs;
+    }
+
+    public List<Utilisateur> getProfesseurs() {
+        List<Utilisateur> professeurs = new ArrayList<>();
+        String sql = "SELECT * FROM utilisateur where role = ? ";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1,"PROFESSEUR");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int idUser = resultSet.getInt("ID_User");
+                String nomUser = resultSet.getString("NOM_USER");
+                String prenomUser = resultSet.getString("PRENOM_USER");
+                String email = resultSet.getString("EMAIL");
+                String password = resultSet.getString("PASSWORD");
+                String telephone = resultSet.getString("TELEPHONE");
+                String role = resultSet.getString("ROLE");
+                professeurs.add(new Utilisateur(idUser, nomUser, prenomUser, email, password, telephone, role));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return professeurs;
+    }
+    public List<Utilisateur> getAdmins() {
+        List<Utilisateur> admins = new ArrayList<>();
+        String sql = "SELECT * FROM utilisateur where role = ? ";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1,"ADMIN");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int idUser = resultSet.getInt("ID_User");
+                String nomUser = resultSet.getString("NOM_USER");
+                String prenomUser = resultSet.getString("PRENOM_USER");
+                String email = resultSet.getString("EMAIL");
+                String password = resultSet.getString("PASSWORD");
+                String telephone = resultSet.getString("TELEPHONE");
+                String role = resultSet.getString("ROLE");
+                admins.add(new Utilisateur(idUser, nomUser, prenomUser, email, password, telephone, role));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return admins;
     }
 
     // Mise à jour d'un utilisateur

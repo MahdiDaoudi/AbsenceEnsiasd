@@ -1,4 +1,4 @@
-package absence.Modele;
+package absence.Modeles;
 public class Etudiant {
     private String idEtudiant;
     private String nomEtudiant;
