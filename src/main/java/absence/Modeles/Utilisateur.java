@@ -1,6 +1,7 @@
 package absence.Modeles;
 
-public class Utilisateur {
+public class
+Utilisateur {
     private int ID_User;
     private String NOM_USER;
     private String PRENOM_USER;

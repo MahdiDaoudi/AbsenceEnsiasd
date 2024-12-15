@@ -1,6 +1,6 @@
 package absence.Modeles;
 public class Etudiant {
-    private String idEtudiant;
+    private String cne;
     private String nomEtudiant;
     private String prenomEtudiant;
     private String email;
@@ -9,9 +9,9 @@ public class Etudiant {
     private int idClasse;
 
     // Constructeur
-    public Etudiant(String idEtudiant, String nomEtudiant, String prenomEtudiant, String email,
+    public Etudiant(String cne, String nomEtudiant, String prenomEtudiant, String email,
                     String telephone, String sexe, int idClasse) {
-        this.idEtudiant = idEtudiant;
+        this.cne = cne;
         this.nomEtudiant = nomEtudiant;
         this.prenomEtudiant = prenomEtudiant;
         this.email = email;
@@ -21,12 +21,14 @@ public class Etudiant {
     }
 
     // Getters et Setters
-    public String getIdEtudiant() {
-        return idEtudiant;
+
+
+    public String getCne() {
+        return cne;
     }
 
-    public void setIdEtudiant(String idEtudiant) {
-        this.idEtudiant = idEtudiant;
+    public void setCne(String cne) {
+        this.cne = cne;
     }
 
     public String getNomEtudiant() {
@@ -79,7 +81,7 @@ public class Etudiant {
 
     // Méthode toString pour afficher un étudiant
     public String toString() {
-        return "Etudiant [ID=" + idEtudiant + ", Nom=" + nomEtudiant + ", Prenom=" + prenomEtudiant +
+        return "Etudiant [ID=" + cne + ", Nom=" + nomEtudiant + ", Prenom=" + prenomEtudiant +
                 ", Email=" + email + ", Téléphone=" + telephone + ", Sexe=" + sexe + ", Classe ID=" + idClasse + "]";
     }
 }

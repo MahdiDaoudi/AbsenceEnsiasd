@@ -2,14 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane fx:controller="absence.Controllers.AccueilAdminController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="950.0" style="-fx-background-color: #efefef;" stylesheets="@../Css/AccueilAdmin.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="950.0" style="-fx-background-color: #efefef;" stylesheets="@../Css/AccueilAdmin.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="absence.Controllers.AccueilAdminController">
    <children>
       <HBox prefHeight="200.0" prefWidth="200.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <padding>
@@ -29,7 +29,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../asset/enseignants.png" />
+                                    <Image url="@../asset/jour-de-calendrier.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -56,7 +56,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../asset/enseignants.png" />
+                                    <Image url="@../asset/semaine-calendaire.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -83,7 +83,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../asset/enseignants.png" />
+                                    <Image url="@../asset/calendrier-des-taches.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -99,5 +99,22 @@
             </VBox>
          </children>
       </HBox>
+      <VBox layoutY="200.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="215.0">
+         <children>
+            <HBox alignment="CENTER" maxHeight="50.0" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #fff;" styleClass="hboxTitreTreeView" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label styleClass="tirePaneTreeView" text="Absences d'aujourd'hui" />
+               </children>
+            </HBox>
+            <TreeView fx:id="listeAbsences" fixedCellSize="50.0" focusTraversable="false" prefHeight="200.0" prefWidth="200.0" showRoot="false" style="-fx-background-color: #fff;" VBox.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+            </TreeView>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="15.0" right="15.0" />
+         </padding>
+      </VBox>
    </children>
 </AnchorPane>

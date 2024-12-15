@@ -14,6 +14,15 @@
     -fx-border-radius: 20 20 20 20;
 }
 .labelNombreAbsence{
-    -fx-font-size: 20;
+    -fx-font-size: 30;
     -fx-font-weight: bold;
+}
+.tirePaneTreeView{
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+.hboxTitreTreeView{
+    -fx-background-radius: 15 15 0 0;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #ddd;
 }
